@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Diet Site</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FFF0F0;
+            box-sizing: border-box;
+        }
+        #banner {
+            background-color: black;
+            padding: 30px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        #banner h1 {
+            color: red;
+            font-size: 45px;
+            margin: 0;
+        }
+        #banner img {
+            width: 80px;
+            height: 70px;
+            margin-right: 20px; /* Space between image and text */
+        }
+        #banner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex: 1;
+            justify-content: flex-start; /* Align items to the start (left) */
+            margin-left: 10px; /* Adjusted space between image and list */
+            flex-wrap: wrap;
+        }
+        #banner li {
+            position: relative;
+            margin: 0 15px; /* Space between list items */
+            padding-left: 20px; /* Space for custom bullet */
+        }
+        #banner li::before {
+            content: '•';
+            color: red;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        #banner h4 {
+            color: red;
+            margin: 0;
+        }
+        #banner button {
+            background-color: red;
+            color: white;
+            height: 40px;
+            width: 140px;
+            font-size: 15px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px; /* Adjusted margin to move button left */
+        }
+        #SABJI {
+            display: flex;
+            height: auto; /* Adjust height to content */
+            overflow: hidden; /* Prevent scrollbars */
+            position: relative;
+            flex-wrap: wrap;
+        }
+        #SABJI img {
+            width: 100%; /* Make the image responsive */
+            max-width: 600px; /* Limit maximum width */
+            height: auto; /* Maintain aspect ratio */
+            opacity: 0.7; /* Apply opacity */
+            margin: 0; /* Remove any default margin */
+        }
+        .form-container {
+            flex: 1; /* Allow this container to take up the remaining space */
+            display: flex;
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in the width calculation */
+            overflow: auto; /* Handle overflow */
+        }
+        .form-content {
+            max-width: 100%; /* Ensure the form does not exceed container width */
+            width: 600px; /* Set a fixed width for the form */
+            background-color: #fff;
+            padding: 20px; /* Adjust padding */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box; /* Include padding in width */
+            margin: auto; /* Center the form within its container */
+        }
+        .bmi-calculator h2, .additional-info-form h2 {
+            color: red;
+            margin-top: 0;
+            font-size: 24px; /* Increased font size for headings */
+        }
+        .bmi-calculator label, .additional-info-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .bmi-calculator input, .bmi-calculator select, .additional-info-form input, .additional-info-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+        .bmi-calculator button, .additional-info-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px; /* Increased font size for buttons */
+        }
+        .bmi-calculator button:hover, .additional-info-form button:hover {
+            background-color: darkred;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #banner h1 {
+                font-size: 30px;
+            }
+            #banner img {
+                width: 60px;
+                height: 50px;
+            }
+            #banner ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            #banner li {
+                margin: 10px 0;
+            }
+            #SABJI {
+                flex-direction: column;
+            }
+            #SABJI img {
+                width: 100%;
+                height: auto;
+            }
+            .form-container {
+                padding: 10px;
+            }
+            .form-content {
+                padding: 20px;
+                max-width: 100%; /* Full width within the container */
+                width: 100%; /* Full width on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <h1>THE DIET SITE!</h1>
+        <img src="tomato-removebg-preview.png" alt="Image of tomato">
+        <ul>
+            <li><h4>Diet Plans</h4></li>
+            <li><h4>Food Facts</h4></li>
+            <li><h4>Health Tracker</h4></li>
+            <li><h4>Get Help</h4></li>
+        </ul>
+        <button type="button" onclick="openVideo()">Sign Up</button>
+    </div>
+    <div id="SABJI"> 
+        <img src="vegetables.jpg" alt="SABJI!!!">
+        <div class="form-container">
+            <div class="form-content">
+                <div class="bmi-calculator">
+                    <h2>Personal Information</h2>
+                    <form id="info-form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required>
+                        
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </form>
+                    <h2>BMI Calculator</h2>
+                    <form id="bmi-form">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="number" id="weight" name="weight" required>
+                        
+                        <label for="height">Height (cm):</label>
+                        <input type="number" id="height" name="height" required>
+                        
+                        <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+                    </form>
+                    <div id="bmi-result" style="margin-top: 20px;"></div>
+                </div>
+                <div class="additional-info-form">
+                    <h2>Additional Information</h2>
+                    <form id="additional-info-form" onsubmit="handleSubmit(event)">
+                        <label for="allergies">Allergies:</label>
+                        <input type="text" id="allergies" name="allergies">
+
+                        <label for="food-preferences">Food Preferences:</label>
+                        <select id="food-preferences" name="food-preferences" required>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="non-vegetarian">Non-Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                        </select>
+
+                        <label for="diet-duration">Duration of Diet (weeks):</label>
+                        <input type="number" id="diet-duration" name="diet-duration" min="1" required>
+                        
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to meters
+            
+            if (isNaN(weight) || isNaN(height) || height === 0) {
+                alert('Please enter valid weight and height.');
+                return;
+            }
+            
+            var bmi = weight / (height * height);
+            var result = 'Your BMI is: ' + bmi.toFixed(2);
+            
+            document.getElementById('bmi-result').innerText = result;
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+            window.open('https://youtu.be/uHgt8giw1LY?feature=shared', '_blank'); // Open the YouTube link in a new tab
+        }
+
+        function openVideo() {
+            window.open('https://youtu.be/uHgt8giw1LY?feature=shared', '_blank');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
